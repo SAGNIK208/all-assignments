@@ -17,8 +17,8 @@ function createDomElements(data) {
 
     if (existingChild) {
       // If it exists, update it
-      existingChild.children[0].innerHTML = item.title;
-      existingChild.children[1].innerHTML = item.description;
+      existingChild.children[0].innerText = item.title;
+      existingChild.children[1].innerText = item.description;
       // Remove it from the currentChildren array
       currentChildren = currentChildren.filter(function(child) {
         return child !== existingChild;
@@ -29,13 +29,13 @@ function createDomElements(data) {
       childElement.dataset.id = item.id; // Store the ID on the element for future lookups
 
       var grandChildElement1 = document.createElement("span");
-      grandChildElement1.innerHTML = item.title
+      grandChildElement1.innerText = item.title
 
       var grandChildElement2 = document.createElement("span");
-      grandChildElement2.innerHTML = item.description
+      grandChildElement2.innerText = item.description
 
       var grandChildElement3 = document.createElement("button");
-      grandChildElement3.innerHTML = "Delete"
+      grandChildElement3.innerText = "Delete"
       grandChildElement3.setAttribute("onclick", "deleteTodo(" + item.id + ")")
 
       childElement.appendChild(grandChildElement1)
@@ -51,16 +51,16 @@ function createDomElements(data) {
   });
 }
 
-//
-// window.setInterval(() => {
-//   let todos = [];
-//   for (let i = 0; i<Math.floor(Math.random() * 100); i++) {
-//     todos.push({
-//       title: "Go to gym",
-//       description: "Go to gym form 5",
-//       id: i+1
-//     })
-//   }
-//
-//   createDomElements(todos)
-// }, 1000)
+
+window.setInterval(() => {
+  let todos = [];
+  for (let i = 0; i<Math.floor(Math.random() * 100); i++) {
+    todos.push({
+      title: "Go to gym",
+      description: "Go to gym form 5",
+      id: i+1
+    })
+  }
+
+  createDomElements(todos);
+}, 1000)
